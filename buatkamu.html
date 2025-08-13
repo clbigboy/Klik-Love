@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Love</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #009af3;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff4d6d;
+            opacity: 0.8;
+            animation: float 3s ease-in-out forwards;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-50px) scale(1.5); opacity: 1; }
+            100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+        }
+        .message {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .instruction {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">Klik dan Itu Buat Kamu</div>
+    <div class="instruction">CHRIS</div>
+    <script>
+        document.addEventListener('click', function(event) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = event.clientX + 'px';
+            heart.style.top = event.clientY + 'px';
+            heart.style.animationDuration = Math.random() * 1 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        });
+    </script>
+</body>
+</html>
